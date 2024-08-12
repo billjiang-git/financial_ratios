@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = Dash(__name__, external_stylesheets=external_stylesheets)
-server = ratios_app.server
+server = app.server
 
 # Global dictionary to store dataframes for analysis
 uploaded_files = {'balance_sheet': None, 'income_statement': None, 'price_history': None}
