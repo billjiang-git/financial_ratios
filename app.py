@@ -10,6 +10,7 @@ from ratios import perform_financial_analysis, unit_conversion
 import dash
 from io import StringIO
 import plotly.graph_objects as go
+import numpy as np
 
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -277,10 +278,12 @@ def update_dropdown(data):
     if not data:
         return []
     df = pd.read_json(data, orient='split')
+    df.replace("N/A", np.nan, inplace=True)
+    results_df = flatten_columns(df)
+    valid_ratios = [col for col in results_df.columns if not df[col].isna().all() and col[0] != 'Time']
     # Adjust here if the columns are nested or have specific formats
-    ratio_names = [' - '.join(col) if isinstance(col, tuple) else col for col in df.columns][1:]
+    ratio_names = [' - '.join(col) for col in valid_ratios]
     return [{'label': ratio, 'value': ratio} for ratio in ratio_names]
-
 
 
 
@@ -348,6 +351,3 @@ def update_graph(selected_ratios, json_data):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
-
