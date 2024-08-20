@@ -8,23 +8,23 @@ import pandas as pd
 import re
 import os
 
-balance_sheet_file_name = input("Enter the balance sheet file path (xlsx): ")
-if not os.path.exists(balance_sheet_file_name):
-        print("File does not exist.")
-        exit()
-income_statement_file_name = input("Enter the income statement file path (xlsx): ")
-if not os.path.exists(balance_sheet_file_name):
-        print("File does not exist.")
-        exit()
-price_file_name = input("Enter the stock price history file path (xlsx): ")
-if not os.path.exists(balance_sheet_file_name):
-        print("File does not exist.")
-        exit()
+# balance_sheet_file_name = input("Enter the balance sheet file path (xlsx): ")
+# if not os.path.exists(balance_sheet_file_name):
+#         print("File does not exist.")
+#         exit()
+# income_statement_file_name = input("Enter the income statement file path (xlsx): ")
+# if not os.path.exists(balance_sheet_file_name):
+#         print("File does not exist.")
+#         exit()
+# price_file_name = input("Enter the stock price history file path (xlsx): ")
+# if not os.path.exists(balance_sheet_file_name):
+#         print("File does not exist.")
+#         exit()
 
-df_price = pd.read_excel(price_file_name, skiprows = 15)
-df_balance_sheet = pd.read_excel(balance_sheet_file_name)
-df_income_statement = pd.read_excel(income_statement_file_name)
-is_copy = df_income_statement.copy()
+# df_price = pd.read_excel(price_file_name, skiprows = 15)
+# df_balance_sheet = pd.read_excel(balance_sheet_file_name)
+# df_income_statement = pd.read_excel(income_statement_file_name)
+# is_copy = df_income_statement.copy()
 # print(df_income_statement.iloc[:,0])
 
 def unit_conversion(df_balance_sheet, df_income_statement):
@@ -58,7 +58,7 @@ def unit_conversion(df_balance_sheet, df_income_statement):
 
 
 
-df_income_statement = unit_conversion(df_balance_sheet, df_income_statement)
+# df_income_statement = unit_conversion(df_balance_sheet, df_income_statement)
 
 # print(df_income_statement.iloc[46:55, 1])
 
@@ -400,7 +400,7 @@ def perform_financial_analysis(df_balance_sheet, df_income_statement, df_price):
 
 
 
-df_ratios = perform_financial_analysis(df_balance_sheet, df_income_statement, df_price)
-print(df_ratios)
+# df_ratios = perform_financial_analysis(df_balance_sheet, df_income_statement, df_price)
+# print(df_ratios)
 
 
